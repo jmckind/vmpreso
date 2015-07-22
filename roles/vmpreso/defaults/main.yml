@@ -1,0 +1,5 @@
+---
+
+vmpreso_root_dir: "/var/lib/vmpreso"
+vmpreso_server_name: localhost
+vmpreso_listen_port: 80

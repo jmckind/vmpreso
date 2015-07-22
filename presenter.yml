@@ -1,0 +1,9 @@
+---
+
+- name: Configure the presenter node
+  hosts: all
+  gather_facts: yes
+  roles:
+    - common
+    - nginx
+    - vmpreso

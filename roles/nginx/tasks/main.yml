@@ -1,0 +1,11 @@
+---
+
+- name: ensure required packages are present
+  apt: pkg={{ item }} state=present
+  sudo_user: root
+  with_items:
+    - nginx
+
+- name: ensure nginx is started and enabled at boot
+  service: name=nginx state=started enabled=yes
+  sudo_user: root

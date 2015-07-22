@@ -1,0 +1,20 @@
+---
+
+- name: ensure the presentation artifacts are present
+  copy: src={{ inventory_dir }}/presentation/ dest=/var/lib/vmpreso
+  when: ansible_bios_version != "VirtualBox" # Vagrant mounts this directory
+
+- name: ensure the nginx site configuration file is present
+  template: src=vmpreso.conf.j2 dest=/etc/nginx/sites-available/vmpreso mode=0644
+  sudo_user: root
+  notify: restart nginx
+
+- name: ensure the nginx site is enabled
+  file: src=/etc/nginx/sites-available/vmpreso path=/etc/nginx/sites-enabled/vmpreso state=link
+  sudo_user: root
+  notify: restart nginx
+
+- name: ensure the default nginx site is disabled
+  file: path=/etc/nginx/sites-enabled/default state=absent
+  sudo_user: root
+  notify: restart nginx
