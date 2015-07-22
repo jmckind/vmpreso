@@ -1,0 +1,10 @@
+---
+
+- name: ensure the nodesource repo is configured
+  shell: curl -sL {{ nodejs_setup_script_url }} | sudo -E bash - creates=/etc/apt/sources.list.d/nodesource.list
+
+- name: ensure required packages are present
+  apt: name={{ item }} state=latest
+  sudo_user: root
+  with_items:
+    - nodejs

@@ -1,0 +1,24 @@
+---
+
+- name: ensure required python modules are present
+  pip: name={{ item }} state=present
+  sudo_user: root
+  with_items:
+    - python-ceilometerclient
+    - python-cinderclient
+    - python-glanceclient
+    - python-heatclient
+    - python-keystoneclient
+    - python-keystoneclient-rackspace
+    - python-openstackclient
+    - python-neutronclient
+    - python-novaclient
+    - python-swiftclient
+    - rackspace-novaclient
+    - swiftly
+
+- name: ensure the openstack environment script is present
+  template: src=openstack-env.sh.j2 dest={{ ansible_env.HOME }}/.openstack-env.sh mode=0600
+
+- name: ensure the openstack environment script is executed on login
+  lineinfile: dest={{ ansible_env.HOME }}/.bashrc regexp="^source ~/.openstack-env.sh" insertafter="EOF" line="source ~/.openstack-env.sh"

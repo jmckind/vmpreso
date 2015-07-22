@@ -1,0 +1,21 @@
+---
+
+- name: ensure the bashrc file is present
+  copy: src=bashrc dest={{ ansible_env.HOME }}/.bashrc mode=0700
+
+- name: ensure common packages are present
+  apt: name={{ item }} state=present
+  sudo_user: root
+  with_items:
+    - build-essential
+    - git
+    - fontconfig
+    - python-dev
+    - python-pip
+    - screen
+
+- name: ensure common python modules are present
+  pip: name={{ item }} state=present
+  sudo_user: root
+  with_items:
+    - httpie

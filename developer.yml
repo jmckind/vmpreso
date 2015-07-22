@@ -1,0 +1,8 @@
+---
+
+- name: Configure developer nodes
+  hosts: all
+  roles:
+    - developer
+    - openstack
+    - nodejs
