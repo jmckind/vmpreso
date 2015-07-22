@@ -1,0 +1,29 @@
+---
+
+- name: Deploy the presentation onto Rackspace Cloud Files
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: ensure the container is created
+      local_action:
+        module: rax_files
+        api_key: "{{ openstack_env_password }}"
+        container: "vmpreso-{{ 1000000 | random(1) | to_uuid }}"
+        meta:
+          created_by: "vmpreso"
+          Web-Error: "error.html"
+          Web-Index: "index.html"
+        public: yes
+        region: "{{ openstack_env_region_name }}"
+        username: "{{ openstack_env_username }}"
+      register: raxfiles
+
+    - name: ensure the presentation is deployed into the container
+      local_action:
+        module: rax_files_objects
+        api_key: "{{ openstack_env_password }}"
+        container: "{{ raxfiles.container }}"
+        method: put
+        region: "{{ openstack_env_region_name }}"
+        src: ./presentation
+        username: "{{ openstack_env_username }}"
