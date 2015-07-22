@@ -19,7 +19,7 @@ Navigate to the project directory and provision the local presenter instance.
 
 The presenter playbook will install common packages and configuration. In addition, the presentation directory is deployed in a web server running on the local instance. Once the presenter playbook has finished successfully, the demo presentation should be available at the following address.
 
-http://localhost:8000/
+[http://localhost:8000](http://localhost:8000)
 
 Any changes made to the files in the presentation directory will be reflected on the local instance after a browser refresh.
 
