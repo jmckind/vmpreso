@@ -1,6 +1,6 @@
 # vmpreso
 
-Ansible playbooks to orchestrate disposable presentation environments.
+Ansible playbooks to orchestrate disposable presentation environments based on Reveal.js.
 
 ### Dependencies
 
