@@ -1,3 +1,6 @@
+#
+# OpenStack
+#
 export OS_AUTH_URL={{ openstack_env_auth_url }}
 export OS_AUTH_SYSTEM={{ openstack_env_auth_system }}
 export OS_REGION_NAME={{ openstack_env_region_name }}
@@ -7,8 +10,21 @@ export OS_PASSWORD={{ openstack_env_password }}
 export OS_PROJECT_ID={{ openstack_env_tenant_id }}
 export OS_NO_CACHE={{ openstack_env_no_cache }}
 
-export NOVA_RAX_AUTH={{ openstack_env_nova_rax_auth }}
+#
+# Nova
+#
+export NOVA_RAX_AUTH={{ openstack_env_rax_nova_auth }}
 
+#
+# Swift
+#
+export ST_AUTH={{ openstack_env_rax_swift_auth_url }}
+export ST_USER={{ openstack_env_username }}
+export ST_KEY={{ openstack_env_password }}
+
+#
+# Swiftly
+#
 export SWIFTLY_AUTH_URL={{ openstack_env_auth_url }}
 export SWIFTLY_AUTH_USER={{ openstack_env_username }}
 export SWIFTLY_AUTH_KEY={{ openstack_env_password }}

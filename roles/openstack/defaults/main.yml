@@ -3,6 +3,8 @@ openstack_env_auth_system: rackspace
 openstack_env_region_name: DFW
 openstack_env_username: USERNAME
 openstack_env_tenant_id: TENANT_ID
-openstack_env_nova_rax_auth: 1
 openstack_env_password: PASSWORD
 openstack_env_no_cache: 1
+
+openstack_env_rax_nova_auth: 1
+openstack_env_rax_swift_auth_url: https://identity.api.rackspacecloud.com/v1.0
